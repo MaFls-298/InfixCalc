@@ -1,9 +1,10 @@
 package com.calculator.list;
 
 public interface InterfList<T> {
-    void add(T value);
-    T get();
-    T remove();
+
+    void addLast(T value);
+    T getLast();
+    T removeLast();
     int size();
     boolean isEmpty();
 }

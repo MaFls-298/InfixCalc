@@ -2,7 +2,7 @@ package com.calculator.list;
 
 public abstract class AbstractList<T> implements InterfList<T> {
 
-    private int size = 0;
+    protected int size = 0;
 
     @Override
     public int size() {
@@ -11,7 +11,6 @@ public abstract class AbstractList<T> implements InterfList<T> {
 
     @Override
     public boolean isEmpty() {
-        return size() == 0;
+        return size == 0;
     }
-    
 }

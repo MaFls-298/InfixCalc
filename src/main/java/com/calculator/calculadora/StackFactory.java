@@ -6,29 +6,29 @@ import com.calculator.list.*;
 import com.calculator.stack.*;
 
 public class StackFactory {
-    /*public static <T> Stack<T> createStack(String tipoStack, String tipoLista) {
+    public static <T> InterfStack<T> createStack(String tipoStack, String tipoLista) {
 
         switch (tipoStack.toLowerCase()) {
 
             case "arraylist":
-                return new ArrayListStack<>();
+                return new ArrayListStack<T>();
 
             case "vector":
-                return new VectorStack<>();
+                return new VectorStack<T>();
 
             case "lista":
-                Lista<T> lista;
+                InterfList<T> lista;
 
-                if (tipoLista.equalsIgnoreCase("simple")) {
-                    lista = new SimpleLinkedList<>();
+                if (tipoLista != null && tipoLista.equalsIgnoreCase("simple")) {
+                    lista = new SinglyLinkedList<T>();
                 } else {
-                    lista = new DoubleLinkedList<>();
+                    lista = new DoublyLinkedList<T>();
                 }
 
-                return new ListStack<>(lista);
+                return new ListStack<T>(lista);
 
             default:
-                throw new IllegalArgumentException("Tipo de stack inválido");
+                throw new IllegalArgumentException("Invalido");
         }
-    }*/
+    }
 }

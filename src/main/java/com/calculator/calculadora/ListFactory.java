@@ -1,8 +1,12 @@
 package com.calculator.calculadora;
+import com.calculator.list.DoublyLinkedList;
+import com.calculator.list.SinglyLinkedList;
+
+import com.calculator.list.InterfList;
 
 public class ListFactory {
 
-    public static <T> List<T> createList(String type) {
+    public static <T> InterfList<T> createList(String type) {
 
         if (type.equalsIgnoreCase("simple")) {
             return new SinglyLinkedList<T>();
