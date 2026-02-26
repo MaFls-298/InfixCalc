@@ -1,34 +1,36 @@
 package com.calculator.calculadora;
 
-import java.util.Stack;
-
-import com.calculator.list.*;
-import com.calculator.stack.*;
+import com.calculator.list.InterfList;
+import com.calculator.list.SinglyLinkedList;
+import com.calculator.list.DoublyLinkedList;
+import com.calculator.stack.InterfStack;
+import com.calculator.stack.ArrayListStack;
+import com.calculator.stack.VectorStack;
+import com.calculator.stack.ListStack;
 
 public class StackFactory {
+
     public static <T> InterfStack<T> createStack(String tipoStack, String tipoLista) {
 
-        switch (tipoStack.toLowerCase()) {
+        if (tipoStack.equalsIgnoreCase("arraylist")) {
+            return new ArrayListStack<T>();
 
-            case "arraylist":
-                return new ArrayListStack<T>();
+        } else if (tipoStack.equalsIgnoreCase("vector")) {
+            return new VectorStack<T>();
 
-            case "vector":
-                return new VectorStack<T>();
+        } else if (tipoStack.equalsIgnoreCase("lista")) {
+            InterfList<T> lista;
 
-            case "lista":
-                InterfList<T> lista;
+            if (tipoLista != null && tipoLista.equalsIgnoreCase("simple")) {
+                lista = new SinglyLinkedList<T>();
+            } else {
+                lista = new DoublyLinkedList<T>();
+            }
 
-                if (tipoLista != null && tipoLista.equalsIgnoreCase("simple")) {
-                    lista = new SinglyLinkedList<T>();
-                } else {
-                    lista = new DoublyLinkedList<T>();
-                }
+            return new ListStack<T>(lista);
 
-                return new ListStack<T>(lista);
-
-            default:
-                throw new IllegalArgumentException("Invalido");
+        } else {
+            throw new IllegalArgumentException("Tipo de stack invalido: " + tipoStack);
         }
     }
 }
